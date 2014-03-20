@@ -74,7 +74,7 @@ command! -nargs=* Wrap set wrap linebreak nolist
 let NERDSpaceDelims=1
 let NERDTreeIgnore=['.DS_Store']
 let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=1
+let g:syntastic_auto_loc_list=2
 let g:syntastic_disabled_filetypes = ['scss', 'sass']
 
 " Popup menu behavior
@@ -266,6 +266,9 @@ if !exists("autocommands_loaded")
   autocmd FileType * if exists("+completefunc") && &completefunc == "" | setlocal completefunc=syntaxcomplete#Complete | endif
   autocmd FileType * if exists("+omnifunc") && &omnifunc == "" | setlocal omnifunc=syntaxcomplete#Complete | endif
 
+  " Make hamlc look nice
+  au BufRead,BufNewFile *.hamlc set ft=haml
+
 endif
 
 
@@ -276,15 +279,17 @@ if $TERM == 'xterm-color' && &t_Co == 8
   set t_Co=16
 endif
 
+set t_Co=256
+
 syntax on
 set background=dark
-colorscheme colorblind
+colorscheme zenburn
 
 
 " GUI specific settings (could be in .gvimrc)
 " -----------------------------------------------------------------------------
 if has('gui_running')
-  set guifont=Menlo:h12
+  set guifont=Monaco:h14
   set go-=T
   set go-=l
   set go-=L
@@ -320,3 +325,5 @@ if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
+map <leader>tt :CommandT<CR>
+let g:CommandTMaxHeight=20

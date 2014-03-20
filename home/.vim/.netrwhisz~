@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/robert.brandin'
+let g:netrw_dirhist_2='/Users/robert.brandin/tnf-brandsite'
+let g:netrw_dirhist_3='/Users/robert.brandin/tnf-brandsite/app/views/protosite/product_categories'
